@@ -23,7 +23,7 @@ void create(int arr[], int n) {
         last = t;
     }
 }
-
+// itretive method
 void displayMethod1(struct Node *newNode) {
     while (newNode != nullptr) {
         cout << newNode->data <<" ";
