@@ -64,6 +64,21 @@ int countMethod2(struct Node *newNode){
     return countMethod2(newNode->next)+1;
 }
 
+// sum of elements using itrative approch in linked list
+int sumOfElementMethod1(struct Node *newNode){
+    int sum = 0;
+    while(newNode!=NULL){
+        sum += newNode->data;
+        newNode = newNode->next;
+    }
+    return sum;
+}
+// sum of element using recusrsive approch in linked list
+int sumOfElementMethod2(struct Node *newNode) {
+    if (newNode == nullptr) return 0; 
+    return newNode->data + sumOfElementMethod2(newNode->next);
+}
+
 int main() {
     int a[] = {2, 6, 8, 4, 9, 4};
     create(a, 6);
@@ -79,6 +94,8 @@ int main() {
 
     cout << endl << "Count (Method-1) : " << countMethod1(head);
     cout << endl << "Count (Method-2) : " << countMethod2(head);
+    cout << endl << "Sum of Element (Method-1) : " << sumOfElementMethod1(head);
+    cout << endl << "Sum of Element (Method-2) : " << sumOfElementMethod2(head);
 
     return 0;
 }
