@@ -24,17 +24,35 @@ void create(int arr[], int n) {
     }
 }
 
-void display(struct Node *newNode) {
+void displayMethod1(struct Node *newNode) {
     while (newNode != nullptr) {
         cout << newNode->data <<" ";
         newNode = newNode->next;
     }
 }
 
+// display linked list using recursion here(first we print then call function again)
+void displayMethod2(struct Node *newNode){
+    if(newNode->next != NULL){
+        cout<<newNode->data<<" ";
+        displayMethod2(newNode->next);
+    }
+}
+// here me first call function then print
+void displayMethod3(struct Node *newNode){
+    if(newNode->next != NULL){
+        displayMethod3(newNode->next);
+        cout<<newNode->data<<" ";
+        
+    }
+}
+
 int main() {
     int a[] = {2, 6, 8, 4, 9, 4};
     create(a, 6);
-    display(head);
+    displayMethod1(head);
+    cout<<endl<<"Display (Method-2) : ";displayMethod2(head);
+    cout<<endl<<"Display (Method-3) : ";displayMethod3(head);
 
-    return 0;  // Added: Return statement to indicate successful completion
+    return 0;
 }
