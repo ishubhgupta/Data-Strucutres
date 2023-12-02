@@ -73,10 +73,36 @@ int sumOfElementMethod1(struct Node *newNode){
     }
     return sum;
 }
-// sum of element using recusrsive approch in linked list
+// sum of element using recursive approch in linked list
 int sumOfElementMethod2(struct Node *newNode) {
     if (newNode == nullptr) return 0; 
     return newNode->data + sumOfElementMethod2(newNode->next);
+}
+
+// maximum of element in linked list using itretive method
+int maxOfElementMethod1(struct Node *newNode){
+    int max = newNode->data;
+    while(newNode!=NULL){
+        if(newNode->data > max){
+            max = newNode->data;
+        }
+        newNode = newNode->next;
+    }
+    return max;
+}
+
+// maximum of element in linked list using recursive function
+int maxOfElementMethod2(struct Node *newNode){
+    int x = 0;
+    if(newNode == 0) return 0;
+    else{
+        x = maxOfElementMethod2(newNode->next);
+        if(newNode->data < x){
+            return x;
+        }
+        else
+            return newNode->data;
+    }
 }
 
 int main() {
@@ -96,6 +122,8 @@ int main() {
     cout << endl << "Count (Method-2) : " << countMethod2(head);
     cout << endl << "Sum of Element (Method-1) : " << sumOfElementMethod1(head);
     cout << endl << "Sum of Element (Method-2) : " << sumOfElementMethod2(head);
+    cout << endl << "Max of Element (Method-1) : " << maxOfElementMethod1(head);
+    cout << endl << "Max of Element (Method-2) : " << maxOfElementMethod2(head);
 
     return 0;
 }
