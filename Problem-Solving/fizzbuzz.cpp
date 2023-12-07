@@ -16,11 +16,6 @@ string ltrim(const string &);
 string rtrim(const string &);
 
 
-/*
- * Complete the 'fizzBuzz' function below.
- *
- * The function accepts INTEGER n as parameter.
- */
 
 void printFizzBuzz(){
     cout<<"FizzBuzz"<<endl;
