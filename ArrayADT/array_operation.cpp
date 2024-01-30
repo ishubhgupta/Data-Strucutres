@@ -6,7 +6,7 @@ struct array {
     int size;
     int length;
 
-    // Passed by reference
+    // Passed by value
     void swap(int &a, int &b) {
         int temp = a;
         a = b;
@@ -149,7 +149,7 @@ void display(const struct array &arr1) {
         cout << arr1.a[i] << " ";
     }
     cout << endl;
-}
+}jn
 
 void set(struct array &arr1, int index, int value) {
     if (index >= 0 && index < arr1.length) {
