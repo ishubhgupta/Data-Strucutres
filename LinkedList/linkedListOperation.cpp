@@ -23,7 +23,7 @@ void create(int arr[], int n) {
         last = t;
     }
 }
-
+// array
 // Iterative method to display linked list
 void displayMethod1(struct Node *newNode) {
     while (newNode != nullptr) {
