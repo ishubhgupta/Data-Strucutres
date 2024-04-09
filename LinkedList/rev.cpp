@@ -1,48 +1,27 @@
 #include <iostream>
 using namespace std;
 
-struct Node
-{
+struct Node{
     int data;
     Node *next;
 };
 
 struct linkedlist{
-    Node *head = new Node();
     linkedlist(){
-        head->next = nullptr;
+        Node *head = new Node();
+        head = nullptr;
     }
 
-    void addElements(int arr[], int n){
-        Node *last = new Node();
-        head->data = arr[0];
-        head->next = nullptr;
-        last = head;
 
-
-        for(int i = 0; i<n;i++){
-            Node * currentNode = new Node();
-            currentNode->data = arr[i];
-            currentNode->next = NULL;
-            last->next = currentNode;
-            last = currentNode;
-        }
-    }
-
-    void display(){
-        Node *currentNode = new Node();
-        cout<<"elements are : ";
-        while(currentNode->next != nullptr){
-            cout<<currentNode->data<<", ";
-            currentNode = currentNode->next;
-        }
-    }
-};
+}
 
 int main(){
-    int arr[] = {2,3,4,5,6};
     linkedlist lst;
+    
+    newnode->data = 5;
+    newnode->next = nullptr;
 
-    lst.addElements(arr, 5);
-    lst.display();
+    newnode2 = newnode;
+    cout<<newnode->data;
+    cout<<newnode2->data;
 }
