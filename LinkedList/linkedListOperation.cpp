@@ -23,7 +23,7 @@ void create(int arr[], int n) {
         last = t;
     }
 }
-
+// array
 // Iterative method to display linked list
 void displayMethod1(struct Node *newNode) {
     while (newNode != nullptr) {
@@ -104,26 +104,76 @@ int maxOfElementMethod2(struct Node *newNode){
             return newNode->data;
     }
 }
+// this function perform linear seach in linked list using iterative method
+struct Node * SearchM1(struct Node *p, int key){
+    while(p->next !=0){
+        if(p->data == key){
+            return p;
+        }
+        p = p->next;
+    }
+    return NULL;
+}
+
+// this function performlinear search in linked list using recursive method
+
+struct Node * SearchM2(struct Node* p, int key){
+    if(p == NULL){
+        return NULL;
+    }
+    if(p->data == key){
+        return p;
+    }
+    return SearchM2(p->next, key);
+}
+
+//  this function performed improved linear search using move to head method
+
+struct Node* SearchM3(struct Node *p, int key){
+    Node *q = NULL;
+    while(p != NULL){
+        if (key == p->data){
+            q->next = p->next;
+            p->next = head;
+            head = p;
+            return p;
+        }    
+        q = p;
+        p = p->next;
+    }
+    return NULL; 
+}
 
 int main() {
-    int a[] = {2, 6, 8, 4, 9, 4};
+    struct Node *temp;
+    int a[] = {2, 6, 8, 4, 9, 7};
     create(a, 6);
 
-    cout << "Display (Method-1) : ";
+    temp = SearchM3(head, 7);
+    if(temp){
+        cout<<"Key "<<temp->data<<" found!!"<<endl;
+    }
+    else{
+        cout<<"Key Not found!!";
+    }
+
     displayMethod1(head);
 
-    cout << endl << "Display (Method-2) : ";
-    displayMethod2(head);
+    // cout << "Display (Method-1) : ";
+    // displayMethod1(head);
 
-    cout << endl << "Display (Method-3) : ";
-    displayMethod3(head);
+    // cout << endl << "Display (Method-2) : ";
+    // displayMethod2(head);
 
-    cout << endl << "Count (Method-1) : " << countMethod1(head);
-    cout << endl << "Count (Method-2) : " << countMethod2(head);
-    cout << endl << "Sum of Element (Method-1) : " << sumOfElementMethod1(head);
-    cout << endl << "Sum of Element (Method-2) : " << sumOfElementMethod2(head);
-    cout << endl << "Max of Element (Method-1) : " << maxOfElementMethod1(head);
-    cout << endl << "Max of Element (Method-2) : " << maxOfElementMethod2(head);
+    // cout << endl << "Display (Method-3) : ";
+    // displayMethod3(head);
+
+    // cout << endl << "Count (Method-1) : " << countMethod1(head);
+    // cout << endl << "Count (Method-2) : " << countMethod2(head);
+    // cout << endl << "Sum of Element (Method-1) : " << sumOfElementMethod1(head);
+    // cout << endl << "Sum of Element (Method-2) : " << sumOfElementMethod2(head);
+    // cout << endl << "Max of Element (Method-1) : " << maxOfElementMethod1(head);
+    // cout << endl << "Max of Element (Method-2) : " << maxOfElementMethod2(head);
 
     return 0;
 }

@@ -6,7 +6,7 @@ struct array {
     int size;
     int length;
 
-    // Passed by reference
+    // Passed by value
     void swap(int &a, int &b) {
         int temp = a;
         a = b;
@@ -254,48 +254,49 @@ void Intersection(const struct array &arr1, const struct array &arr2) {
     cout << endl;
 }
 
-int main(){
-    struct array arr1;
-    int ch;
-    // arr1.size
+// int main(){
+//     struct array arr1;
+//     int ch;
+//     // arr1.size
 
-    cout<<"1. Insert"<<endl;
-    cout<<"2. Delete"<<endl;
-    cout<<"3. Append"<<endl;
-    cout<<"4. Linear Search"<<endl;
-    cout<<"5. Binary Search"<<endl;
-    cout<<"6. Merge 2 array"<<endl;
-    cout<<"7. Get"<<endl;
-    cout<<"8. Set"<<endl;
-    cout<<"9. Sorted Insertion"<<endl;
-    cout<<"10. Reverse Method 1"<<endl;
-    cout<<"11. Reverse Method 2"<<endl;
-    cout<<"12. Intersection"<<endl;
-    cout<<"13. Union"<<endl;
-}
-// int main() {
-//     struct array arr1 = {{2, 3, 4, 5, 6, 7}, 20, 6};
-//     struct array arr2 = {{2, 7, 10, 11, 15, 20}, 20, 6};
-//     mergeArray(arr1, arr2);
-//     Union(arr1, arr2);
-//     Intersection(arr1, arr2);
-//     arr1.append(10);
-//     append(arr1, 100);
-//     insert(arr1, 4, 8);
-//     arr1.insert(7, 11);
-//     del(arr1, 5);
-//     int x = linearSearch(arr1, 8);
-//     cout << "Element found at " << x << " using linear search" << endl;
-//     int y = binarySearch(arr1, 10);
-//     cout << "Element found at " << y << " using binary search" << endl;
-//     get(arr1, 2);
-//     arr1.get(6);
-//     set(arr1, 7, 34);
-//     arr1.display();
-//     display(arr1);
-//     arr1.sortedInsertion(15);
-//     arr1.reverseM1();
-//     arr1.reverseM2();
-
-//     return 0;
+//     cout<<"1. Insert"<<endl;
+//     cout<<"2. Delete"<<endl;
+//     cout<<"3. Append"<<endl;
+//     cout<<"4. Linear Search"<<endl;
+//     cout<<"5. Binary Search"<<endl;
+//     cout<<"6. Merge 2 array"<<endl;
+//     cout<<"7. Get"<<endl;
+//     cout<<"8. Set"<<endl;
+//     cout<<"9. Sorted Insertion"<<endl;
+//     cout<<"10. Reverse Method 1"<<endl;
+//     cout<<"11. Reverse Method 2"<<endl;
+//     cout<<"12. Intersection"<<endl;
+//     cout<<"13. Union"<<endl;
 // }
+
+int main() {
+    struct array arr1 = {{2, 3, 4, 5, 6, 7}, 20, 6};
+    struct array arr2 = {{2, 7, 10, 11, 15, 20}, 20, 6};
+    mergeArray(arr1, arr2);
+    Union(arr1, arr2);
+    Intersection(arr1, arr2);
+    arr1.append(10);
+    append(arr1, 100);
+    insert(arr1, 4, 8);
+    arr1.insert(7, 11);
+    del(arr1, 5);
+    int x = linearSearch(arr1, 8);
+    cout << "Element found at " << x << " using linear search" << endl;
+    int y = binarySearch(arr1, 10);
+    cout << "Element found at " << y << " using binary search" << endl;
+    get(arr1, 2);
+    arr1.get(6);
+    // set(arr1, 7, 34);
+    arr1.display();
+    display(arr1);
+    arr1.sortedInsertion(15);
+    arr1.reverseM1();
+    arr1.reverseM2();
+
+    return 0;
+}
