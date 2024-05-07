@@ -26,3 +26,6 @@ int main() {
     cout<<nums.size();
     return 0;
 }
+
+
+// this solution to the problem is not prefred as it have higher time complexity(due to erasing element part) then the method 2
