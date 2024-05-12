@@ -1,27 +1,24 @@
-#include <iostream>
+#include<iostream>
+#include<cstring>
+#include<stdlib.h>
 using namespace std;
 
-struct Node{
-    int data;
-    Node *next;
-};
-
-struct linkedlist{
-    linkedlist(){
-        Node *head = new Node();
-        head = nullptr;
+int findPermutationDifference(string s, string t){
+    int n = s.length();
+    int sum=0;
+    for(int i =0; i<n;i++){
+        for(int j = 0; j<n;j++){
+            if(t[j] == s[i]){
+                sum += abs(i-j);
+                break;
+            }
+        }
     }
-
-
+    return sum;
 }
 
 int main(){
-    linkedlist lst;
-    
-    newnode->data = 5;
-    newnode->next = nullptr;
-
-    newnode2 = newnode;
-    cout<<newnode->data;
-    cout<<newnode2->data;
+    string s = "abcde";
+    string t = "edbac";
+    cout<<findPermutationDifference(s, t);
 }
