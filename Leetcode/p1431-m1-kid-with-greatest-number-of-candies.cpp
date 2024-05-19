@@ -26,3 +26,5 @@ int main(){
         cout<<x<<" ";
     }
 }
+
+// candies with count 
