@@ -20,5 +20,7 @@ int arithmeticTriplets(vector<int>& nums, int diff) {
 int main(){
     vector<int> vec1 = {1, 2,3 , 4, 5, 6};
     cout<<arithmeticTriplets(vec1, 3);
+    cout<<arithmeticTriplets(vec1, 8);
+
     return 0;
 }
