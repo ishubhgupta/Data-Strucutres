@@ -21,6 +21,7 @@ vector<int> smallerNumbersThanCurrent(vector<int>& nums) {
 
 int main(){
     vector<int> vec1 = {8, 1, 2, 2, 3};
+    vec1 = smallerNumbersThanCurrent(vec1);
     for(auto x:vec1){
         cout<<x<<" ";
     }
