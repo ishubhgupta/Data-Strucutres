@@ -15,7 +15,8 @@ vector<int> sortedSquares(vector<int>& nums) {
 
 int main(){
     vector<int> vec1 = {-4, -1, 0, 0,  3, 10};
-    vec1 = sortedSquares(vec1);
+    vector<int> vec2 = {-4, -1, -0, -0,  -3, -10};
+    vec1 = sortedSquares(vec2);
     for(auto x: vec1){
         cout<<x<<" ";
     }
