@@ -28,3 +28,14 @@ int oddCells(int m, int n, vector<vector<int>>& indices) {
     }
     return count;
 }
+
+int main() {
+    int m = 3;
+    int n = 4;
+    vector<vector<int>> indices = {{0, 1}, {1, 2}, {2, 3}};
+
+    int result = oddCells(m, n, indices);
+    cout << "Number of odd-valued cells: " << result << endl;
+
+    return 0;
+}
