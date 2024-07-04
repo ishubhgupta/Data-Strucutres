@@ -20,5 +20,8 @@ int minDifference(vector<int>& nums) {
 int main() {
     vector<int> nums = {1, 5, 0, 10, 14};
     cout<<minDifference(nums)<<endl;
+
+    vector<int> nums = {1, 6, 0, 10, 14};
+    cout<<minDifference(nums)<<endl;
     return 0;
 }
