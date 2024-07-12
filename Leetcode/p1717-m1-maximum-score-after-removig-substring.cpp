@@ -1,3 +1,4 @@
+// this is not good solution not valid for all test case
 #include <bits/stdc++.h>
 using namespace std;
 
