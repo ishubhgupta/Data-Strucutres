@@ -7,9 +7,19 @@ struct Stack {
     int *s;
 };
 
+bool isEmpty(struct Stack *st){
+    if(st->top == -1) return true;
+    return false;
+}
+
+bool isFull(struct Stack *st){
+    if(st->top== st->size-1) return true;
+    return false;
+}
+
 // Push an element onto the stack
 void push(Stack *st, int x) {
-    if (st->top == st->size - 1) {
+    if (isFull(st)) {
         cout << "Stack is full" << endl;
     } else {
         st->s[++st->top] = x;
@@ -18,7 +28,7 @@ void push(Stack *st, int x) {
 
 // Pop an element from the stack
 int pop(Stack *st) {
-    if (st->top == -1) {
+    if (isEmpty(st)) {
         cout << "Stack is empty" << endl;
         return -1; 
     } else {
