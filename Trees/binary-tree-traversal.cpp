@@ -95,6 +95,81 @@ void iterativeInorder(struct Node* root) {
     }
 }
 
+void iterativePostorder2stack(struct Node* root){
+    if (root == NULL) return;
+    stack<Node*> st1;
+    stack<Node*> st2;
+
+    st1.push(root);
+
+    while(!st1.empty()){
+        Node* peek = st1.top();
+        st1.pop();
+        st2.push(peek);
+
+        if(peek->left != NULL) st1.push(peek->left);
+        if(peek->right != NULL) st1.push(peek->right);
+    }
+    while(!st2.empty()){
+        cout<<st2.top()->data<<" ";
+        st2.pop();
+    }
+}
+
+void traversal(struct Node* root){
+    vector<int> preorder;
+    vector<int> inorder;
+    vector<int> postorder;
+
+    if (root == NULL) return;
+
+    stack<pair<Node*, int>> st;
+    st.push(make_pair(root, 1));
+
+    while(!st.empty()){
+        int num = st.top().second;
+        Node* curr = st.top().first;
+        st.pop(); 
+
+        if (num == 1) { 
+            preorder.push_back(curr->data);
+            st.push(make_pair(curr, 2));  
+            if (curr->left != NULL) {
+                st.push(make_pair(curr->left, 1));  
+            }
+        }
+        else if (num == 2) { 
+            inorder.push_back(curr->data);
+            st.push(make_pair(curr, 3));  
+            if (curr->right != NULL) {
+                st.push(make_pair(curr->right, 1));
+            }
+        }
+        else if (num == 3) { 
+            postorder.push_back(curr->data);
+        }
+    }
+
+    cout << "Preorder: ";
+    for (auto x : preorder) {
+        cout << x << " ";
+    }
+    cout << endl;
+
+    cout << "Inorder: ";
+    for (auto x : inorder) {
+        cout << x << " ";
+    }
+    cout << endl;
+
+    cout << "PostOrder: ";
+    for (auto x : postorder) {
+        cout << x << " ";
+    }
+    cout << endl;
+}
+
+
 
 int main(){
     struct Node *root = new Node(1);
@@ -127,5 +202,9 @@ int main(){
     preorderIterative(root);
     cout<<endl;
     iterativeInorder(root);
+    cout<<endl;
+    iterativePostorder2stack(root);
+    cout<<endl;
+    traversal(root);
     return 0;
 }
