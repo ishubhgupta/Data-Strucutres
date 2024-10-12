@@ -197,6 +197,55 @@ void traversal(struct Node* root){
     }
     cout << endl;
 }
+bool isLeaf(struct Node* root){
+    if(root->left == NULL && root->right == NULL) return true;
+    else return false;
+}
+
+void leftBoundary(struct Node* root, vector<int> &res){
+    Node* curr = root->left;
+    while(curr){
+        if(!isLeaf(curr)) res.push_back(curr->data);
+        if(curr->left == NULL) curr = curr->right;
+        else curr = curr->left;
+    }
+}
+
+void leafNode(struct Node* root, vector<int> &res){
+    if(root->left != NULL) leafNode(root->left, res);
+    if(isLeaf(root)) {
+        res.push_back(root->data);
+        return;
+    } 
+    if(root->right) leafNode(root->right, res);
+}
+
+void rightBoundary(struct Node* root, vector<int> &res){
+    Node* curr = root->right;
+    stack<int> st;
+    while(curr){
+        if(!isLeaf(curr)) st.push(curr->data);
+        if(curr->right == NULL) curr = curr->left;
+        else curr  = curr->right;
+    }
+
+    while(!st.empty()){
+        int val = st.top();
+        st.pop();
+        res.push_back(val);
+    }
+}
+void boundaryTraversal(struct Node* root){
+    if (root == NULL) return;
+    vector<int> res;
+    if(!isLeaf(root)) res.push_back(root->data);
+    leftBoundary(root, res);
+    leafNode(root, res);
+    rightBoundary(root, res);
+    for(auto x: res){
+        cout<<x<<" ";
+    }
+}
 
 int main(){
     struct Node *root = new Node(1);
@@ -241,5 +290,8 @@ int main(){
             cout<<zig[i][j]<<" ";
         }
     }
+    cout<<endl;
+    cout<<"Boundary Traversal: ";
+    boundaryTraversal(root);
     return 0;
 }
