@@ -116,6 +116,35 @@ void iterativePostorder2stack(struct Node* root){
     }
 }
 
+vector<vector<int>> zigzag(struct Node* root){
+    vector<vector<int>> res;
+    if (root == NULL) return res;
+
+    queue<Node*> q;
+    q.push(root);
+    bool leftToRight = true;
+
+    while(!q.empty()){
+        int size = q.size();
+        vector<int> level(size);
+        for(int i = 0; i< size; i++){
+            Node * crr = q.front();
+            q.pop();
+
+            int index = leftToRight ? i : size-1-i;
+            level[index] = crr->data;
+
+            if(crr->left != NULL) q.push(crr->left);
+            if(crr->right != NULL) q.push(crr->right);
+
+        }
+        leftToRight = !leftToRight;
+        res.push_back(level);
+    }
+    return res;
+
+}
+
 void traversal(struct Node* root){
     vector<int> preorder;
     vector<int> inorder;
@@ -169,8 +198,6 @@ void traversal(struct Node* root){
     cout << endl;
 }
 
-
-
 int main(){
     struct Node *root = new Node(1);
     root->left =new Node(2);
@@ -206,5 +233,13 @@ int main(){
     iterativePostorder2stack(root);
     cout<<endl;
     traversal(root);
+
+    vector<vector<int>> zig = zigzag(root);
+    cout<< "ZigZag traversal: ";
+    for(int i = 0; i < zig.size();i++){
+        for(int j = 0; j < zig[i].size(); j++){
+            cout<<zig[i][j]<<" ";
+        }
+    }
     return 0;
 }
