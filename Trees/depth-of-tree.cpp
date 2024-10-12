@@ -34,6 +34,20 @@ bool isbalanced(struct Node* root){
     return true;
 }
 
+int height(struct Node* root, int &diameter){
+    if (root == NULL) return 0;
+    int lh = height(root->left, diameter);
+    int rh = height(root->right, diameter);
+    diameter = max(diameter, rh+lh);
+    return 1 + max(lh, rh);
+}
+
+int diameterOfBT(struct Node* root){
+    int diameter = 0;
+    height(root, diameter);
+    return diameter;
+}
+
 int main() {
     struct Node *root = new Node(1);
     root->left =new Node(2);
@@ -48,5 +62,7 @@ int main() {
     cout<<maxdepth(root);
     cout<<endl;
     cout<<isbalanced(root);
+    cout<<endl;
+    cout<<diameterOfBT(root);
     return 0;
 }
