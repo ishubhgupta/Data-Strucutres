@@ -1,7 +1,4 @@
-#include<iostream>
-#include<queue>
-#include<stack>
-#include<vector>
+#include <bits/stdc++.h>
 using namespace std;
 
 struct Node{
@@ -247,6 +244,37 @@ void boundaryTraversal(struct Node* root){
     }
 }
 
+vector<vector<int>> verticalOrderTraversal(struct Node* root){
+    vector<vector<int>> res;
+    if(root == NULL) return res;
+    int vr, hr;
+    queue<pair<Node*, pair<int, int>>> q;
+    map<int, map<int, multiset<int>>> nodes;
+    q.push({root, {0, 0}});
+
+    while(!q.empty()){
+        auto p = q.front();
+        q.pop();
+
+        Node* crr = p.first;
+        int x = p.second.first;
+        int y = p.second.second;
+
+        nodes[x][y].insert(crr->data);
+        if(crr->left) q.push({crr->left, {x-1, y+1}});
+        if(crr->right) q.push({crr->right, {x+1, y+1}});
+    }
+
+    for (auto p : nodes) {
+        vector<int> col;                
+        for (auto q : p.second) {       
+            col.insert(col.end(), q.second.begin(), q.second.end()); 
+        }
+        res.push_back(col);            
+    }
+    return res;
+}
+
 int main(){
     struct Node *root = new Node(1);
     root->left =new Node(2);
@@ -293,5 +321,16 @@ int main(){
     cout<<endl;
     cout<<"Boundary Traversal: ";
     boundaryTraversal(root);
+
+    vector<vector<int>> vlt = verticalOrderTraversal(root);
+    cout<<endl;
+    cout<< "Vertical Level traversal"<<endl;
+    for(int i = 0; i < vlt.size();i++){
+        cout<<"Level "<<i+1<<": ";
+        for(int j = 0; j < vlt[i].size(); j++){
+            cout<<vlt[i][j]<<" ";
+        }
+        cout<<endl;
+    }
     return 0;
 }
