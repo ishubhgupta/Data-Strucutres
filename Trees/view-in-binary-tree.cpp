@@ -62,6 +62,25 @@ void buttomView(struct TreeNode* root){
     }
 }
 
+void rightView(struct TreeNode* root, int level, vector<int> &res){
+    if(root == NULL) return;
+    if(res.size() == level){
+        res.push_back(root->data);
+    }
+    if(root->right) rightView(root->right, level+ 1, res);
+    if(root->left) rightView(root->left, level+ 1, res);
+
+}
+void leftView(struct TreeNode* root, int level, vector<int> &res){
+    if(root == NULL) return;
+    if(res.size() == level){
+        res.push_back(root->data);
+    }
+    if(root->left) leftView(root->left, level+ 1, res);
+    if(root->right) leftView(root->right, level+ 1, res);
+    
+}
+
 int main() {
     struct TreeNode *root = new TreeNode(1);
     root->left =new TreeNode(2);
@@ -77,5 +96,19 @@ int main() {
     }
     cout<<endl;
     buttomView(root);
+
+    vector<int> rightV;
+    rightView(root,0, rightV);
+    cout<<endl<<"Right View: ";
+    for(auto x : rightV){
+        cout<<x<< " ";
+    }
+
+    vector<int> leftV;
+    leftView(root,0, leftV);
+    cout<<endl<<"Left View: ";
+    for(auto x : leftV){
+        cout<<x<< " ";
+    }
     return 0;
 }
