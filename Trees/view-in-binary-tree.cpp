@@ -38,6 +38,30 @@ vector<int> topView(struct TreeNode* root){
 }
 
 
+void buttomView(struct TreeNode* root){
+    if(root == NULL) return;
+
+    queue<pair<TreeNode*, int>> q;
+    map<int, int> mpp;
+
+    q.push(make_pair(root, 0));
+    while(!q.empty()){
+        auto p = q.front();
+        q.pop();
+
+        TreeNode* node = p.first;
+        int line = p.second;
+
+        mpp[line] = node->data;
+        if(node->left) q.push(make_pair(node->left, line-1));
+        if(node->right) q.push(make_pair(node->right, line+1));
+    }
+
+    for(auto x: mpp){
+        cout<<x.second<<" ";
+    }
+}
+
 int main() {
     struct TreeNode *root = new TreeNode(1);
     root->left =new TreeNode(2);
@@ -51,6 +75,7 @@ int main() {
     for(auto x: topv){
         cout<<x<<" ";
     }
-
+    cout<<endl;
+    buttomView(root);
     return 0;
 }
