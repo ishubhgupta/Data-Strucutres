@@ -65,6 +65,29 @@ int widthOfBinaryTree(TreeNode* root) {
 
     return maxWidth;
 }
+
+void childrenSumProperty(TreeNode* root){
+    if (root == NULL) return;
+    int child = 0;
+    if(root->left) {
+        child += root->left->val;
+    }
+    if(root->right){
+        child += root->right->val;
+    }
+    if(child<root->val){
+        if(root->left) root->left->val = child;
+        else if(root->right) root->right->val = child;
+    }
+    childrenSumProperty(root->left);
+    childrenSumProperty(root->right);
+
+    int total = 0;
+    if(root->left) total = root->left->val;
+    if(root->right) total = root->right->val;
+    if(root-> val || root->right) root->val = total;    
+}
+
 int main() {
     struct TreeNode *root = new TreeNode(1);
     root->left =new TreeNode(2);
