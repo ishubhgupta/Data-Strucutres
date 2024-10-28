@@ -88,6 +88,62 @@ void childrenSumProperty(TreeNode* root){
     if(root-> val || root->right) root->val = total;    
 }
 
+void markParent(TreeNode* root, unordered_map<TreeNode*, TreeNode*> &parent){
+    queue<TreeNode*> q;
+    q.push(root);
+    while (!q.empty()){
+        TreeNode* node = q.front();
+        q.pop();
+        if(node->left){
+            parent[node->left] = node;
+            q.push(node->left);
+        }
+        if(node->right){
+            parent[node->right] = node;
+            q.push(node->right);
+        }
+    }
+}
+
+vector<int> distanceK(TreeNode *root, TreeNode* target, int k){
+    unordered_map<TreeNode*, TreeNode*> parent;
+    markParent(root, parent);
+    unordered_map<TreeNode*, bool> visited;
+
+    queue<TreeNode*> q;
+    q.push(target);
+    visited[target] = true;
+    int currentLevel = 0;
+    while(!q.empty()){
+        int size = q.size();
+        if (currentLevel++ == k) break;
+        for( int i = 0; i< size; i++){
+            TreeNode* node = q.front();
+            q.pop();
+            if(node->left && !visited[node->left]){
+                q.push(node->left);
+                visited[node->left] = true;
+            }
+            if(node->right && ! visited[node->right]){
+                q.push(node->right);
+                visited[node->right] = true;
+            }
+            if(parent[node] && !visited[parent[node]]){
+                q.push(parent[node]);
+                visited[parent[node]];
+            }
+            
+        }
+    }
+
+    vector<int> res;
+    while(!q.empty()){
+        res.push_back(q.front()->val);
+        q.pop();
+    }
+    return res;
+}
+
 int main() {
     struct TreeNode *root = new TreeNode(1);
     root->left =new TreeNode(2);
@@ -104,4 +160,8 @@ int main() {
     cout<<lowestCommonAncestor(path1, path2);
     cout<<endl;
     return 0;
+    vector<int>result = distanceK(root, root->right, 1);
+    for(auto x: result){
+        cout<<x<<" ";
+    }
 }
