@@ -43,9 +43,9 @@ void representationUsingAdjListOfDGWeighted(int n, int m, int w){
 int main() {
     int n, m, w;
     cin>>n>>m;
-    // representationUsingAdjMatOfUG(n, m);
-    // representationUsingAdjListOfUG(n, m);
-    // representationUsingAdjListOfDG(n, m);
+    representationUsingAdjMatOfUG(n, m);
+    representationUsingAdjListOfUG(n, m);
+    representationUsingAdjListOfDG(n, m);
     cin >> w;
     representationUsingAdjListOfDGWeighted(n, m, w);
     return 0;
