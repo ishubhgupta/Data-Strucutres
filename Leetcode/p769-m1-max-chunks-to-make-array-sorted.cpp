@@ -36,16 +36,3 @@ int main() {
     
     return 0;
 }
-
-// Test cases
-/*
-Example 1:
-Input: arr = [4,3,2,1,0]
-Output: 1
-Explanation: Only one chunk possible
-
-Example 2:
-Input: arr = [1,0,2,3,4]
-Output: 4
-Explanation: Chunks are [1,0], [2], [3], [4]
-*/
