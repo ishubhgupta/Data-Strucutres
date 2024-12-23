@@ -22,6 +22,16 @@ vector<int> bfs(int start, vector<int> adj[], int n){
     return bfsOrder;
 }
 
+void dfs(vector<int> adj[], vector<int> &dfsOrder, int start, vector<int> &visited, int n){
+    visited[start] = 1;
+    dfsOrder.push_back(start);
+    for(auto x: adj[start]){
+        if(!visited[x]){
+            dfs(adj, dfsOrder, x, visited, n);
+        }
+    }
+}
+
 int main() {
     int n = 9;
     vector<int> adj[n+1];
@@ -41,5 +51,15 @@ int main() {
         cout<<x<<" ";
     }
     cout<<endl;
+
+    vector<int> dfsorder;
+    vector<int> visited(n+1, 0);  // Create visited array in main
+    dfs(adj, dfsorder, 1, visited, n);
+    for(auto x: dfsorder){
+        cout<<x<<" ";
+    }
+    cout<<endl;
+
+
     return 0;
 }
